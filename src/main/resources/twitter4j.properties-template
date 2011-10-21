@@ -1,0 +1,10 @@
+oauth.consumerKey=
+oauth.consumerSecret=
+oauth.accessToken=
+oauth.accessTokenSecret=
+debug=false
+http.proxyHost=
+http.proxyPort=
+http.retryCount=0
+http.connectionTimeout=10000
+http.readTimeout=10000

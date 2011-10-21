@@ -1,0 +1,21 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="twitterFactory" class="twitter4j.TwitterFactory"/>
+    <bean id="twitter" class="twitter4j.Twitter"
+          factory-bean="twitterFactory" factory-method="getInstance"
+          depends-on="twitterFactory">
+    </bean>
+    <bean id="interceptor" class="withgod.spring.Interceptor" />
+
+    <bean id="twitterProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="twitter" />
+        <property name="interceptorNames">
+            <list>
+                <value>interceptor</value>
+            </list>
+        </property>
+    </bean>
+</beans>
